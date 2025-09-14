@@ -42,7 +42,7 @@ def ask_questions():
         else:
             print("Incorrect")
             Incorrect+= 1
-            
+
             if Incorrect == 3:
                 print("Play agin!!!")
                 break
