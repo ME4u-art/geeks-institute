@@ -24,3 +24,37 @@ data = [
         "answer": "Wookiee"
     }
 ]
+
+
+def ask_questions():
+    correcct =0
+    Incorrect =0
+
+    start_quit = input("To play type Yes/No to quit: ").lower()
+    if start_quit != "yes":
+        print("GoodBye!")
+        return 0, 0
+    for i, q in enumerate(data, start=1):
+        user_answer = input(f"For question {i}: {q['question']}: ")
+        if user_answer.lower() == q ['answer'].lower() :
+            print("correcct")
+            correcct += 1
+        else:
+            print("Incorrect")
+            Incorrect+= 1
+            
+            if Incorrect == 3:
+                print("Play agin!!!")
+                break
+
+    return correcct, Incorrect
+
+def score():
+    correcct_cout,incorrecct_count = ask_questions()
+    print(f"correcct answers :{correcct_cout}")
+    print(f"Incorrecct answers:{incorrecct_count}")
+
+
+
+
+score()
