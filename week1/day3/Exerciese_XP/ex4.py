@@ -44,6 +44,6 @@ new_zoo.add_animal("Alligator")
 new_zoo.add_animal("Leopard")
 
 
-new_york_zoo.sell_animals("Tiger")
+new_zoo.sell_animals("Tiger")
 
-new_york_zoo.get_groups()
+new_zoo.get_groups()
