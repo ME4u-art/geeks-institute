@@ -34,16 +34,16 @@ class Zoo:
             print(f"Group {key}: {animals}")
 
 
-new_york_zoo = Zoo("New York Zoo")
+new_zoo = Zoo("New York Zoo")
 
-new_york_zoo.add_animal("Tiger")
-new_york_zoo.add_animal("Elephant")
-new_york_zoo.add_animal("Antelope")
-new_york_zoo.add_animal("Lion")
-new_york_zoo.add_animal("Alligator")
-new_york_zoo.add_animal("Leopard")
+new_zoo.add_animal("Tiger")
+new_zoo.add_animal("Elephant")
+new_zoo.add_animal("Antelope")
+new_zoo.add_animal("Lion")
+new_zoo.add_animal("Alligator")
+new_zoo.add_animal("Leopard")
 
 
-new_york_zoo.sell_animals("Tiger")
+new_zoo.sell_animals("Tiger")
 
-new_york_zoo.get_groups()
+new_zoo.get_groups()
