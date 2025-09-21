@@ -1,10 +1,28 @@
-### GET all students with pagination
-GET http://127.0.0.1:5001/students?page=1&limit=-1
+### GET all students (default pagination)
+GET http://127.0.0.1:5001/students
+Accept: application/json
 
-### GET specific student
+###
+
+### GET all students (custom pagination: page 1, limit 3)
+GET http://127.0.0.1:5001/students?page=1&limit=3
+Accept: application/json
+
+###
+
+### GET student by ID (existing student)
 GET http://127.0.0.1:5001/students/1
+Accept: application/json
 
-### POST new student
+###
+
+### GET student by ID (non-existent student)
+GET http://127.0.0.1:5001/students/999
+Accept: application/json
+
+###
+
+### POST new student (valid data)
 POST http://127.0.0.1:5001/students
 Content-Type: application/json
 
@@ -15,14 +33,47 @@ Content-Type: application/json
   "gender": "female"
 }
 
-### PUT update student
-PUT http://127.0.0.1:5001/students/1
+###
+
+### POST new student (missing required field)
+POST http://127.0.0.1:5001/students
 Content-Type: application/json
 
 {
-  "age": 30,
-  "name": "John Updated"
+  "name": "Bob Builder",
+  "age": 22
 }
 
-### DELETE student
-DELETE http://127.0.0.1:5001/students/1
+###
+
+### PUT update student (existing student)
+PUT http://127.0.0.1:5001/students/2
+Content-Type: application/json
+
+{
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "age": 26
+}
+
+###
+
+### PUT update student (non-existent student)
+PUT http://127.0.0.1:5001/students/999
+Content-Type: application/json
+
+{
+  "name": "Ghost Student"
+}
+
+###
+
+### DELETE student (existing student)
+DELETE http://127.0.0.1:5001/students/3
+Accept: application/json
+
+###
+
+### DELETE student (non-existent student)
+DELETE http://127.0.0.1:5001/students/999
+Accept: application/json
