@@ -1,0 +1,28 @@
+### GET all students with pagination
+GET http://127.0.0.1:5001/students?page=1&limit=-1
+
+### GET specific student
+GET http://127.0.0.1:5001/students/1
+
+### POST new student
+POST http://127.0.0.1:5001/students
+Content-Type: application/json
+
+{
+  "name": "Alice Wonderland",
+  "email": "alice@example.com",
+  "age": 25,
+  "gender": "female"
+}
+
+### PUT update student
+PUT http://127.0.0.1:5001/students/1
+Content-Type: application/json
+
+{
+  "age": 30,
+  "name": "John Updated"
+}
+
+### DELETE student
+DELETE http://127.0.0.1:5001/students/1

@@ -1,0 +1,23 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# MacOS / Linux
+.DS_Store
+
+# Python dotenv file with environment variables (optional, if sensitive)
+.env
+
+# Logs
+*.log
+
+# Database files (if any)
+*.sqlite3

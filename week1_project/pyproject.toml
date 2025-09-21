@@ -1,0 +1,11 @@
+[project]
+name = "week_1_project"
+version = "0.1.0"
+description = "Flask CRUD API for managing student records"
+dependencies = [
+    "Flask>=3.1.2",
+    "python-dotenv>=1.1.1",
+]
+
+[tool.uv] 
+python = ">=3.10"
