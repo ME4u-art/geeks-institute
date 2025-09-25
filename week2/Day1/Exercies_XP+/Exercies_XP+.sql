@@ -1,3 +1,5 @@
+
+
 --Exercise 1 : Items and customers--
 --Add two table--
 CREATE TABLE items (
