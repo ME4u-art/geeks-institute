@@ -1,0 +1,48 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "public",
+            "database": "public",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "dvdrental",
+            "database": "dvdrental",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "bootcamp",
+            "database": "bootcamp",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "restaurant_db",
+            "database": "restaurant_db",
+            "username": "postgres",
+            "password": "root"
+        }
+    ]
+}
