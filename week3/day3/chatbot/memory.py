@@ -13,8 +13,10 @@ class MemoryManager:
 
     def load(self):
         with open(self.filename, 'r', encoding='utf-8') as f:
-            try: self.items = json.load(f)
-            except: self.items = []
+            try:
+                self.items = json.load(f)
+            except:
+                self.items = []
 
     def save(self):
         with open(self.filename, 'w', encoding='utf-8') as f:
