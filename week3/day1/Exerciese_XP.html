@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Exercies XP</H1>
+
+    <script>
+                    /*EX1*/
+            /*Part I - Review about arrays*/
+       /*1*/ 
+    const people = ["Greg", "Mary", "Devon", "James"]  
+    console.log(people.shift())
+        /*2*/
+    console.log(people.splice(2,1,"Jason") )
+        /*3*/
+    console.log(people.push("hicham") )
+        /*4*/
+    console.log(people.indexOf("Mary"))
+         /*5*/   
+    console.log(people.slice(0,-1) )
+        /*6*/
+    console.log(people.indexOf("Foo"))
+        /*why... becaus when the method indexof dont found the element in the array it return -1 */
+        /*7*/
+    let last = people[people.length -1]
+    console.log(last)
+    /*Part II - Loops*/
+    
+    for (let i in people ){
+        console.log(people[i])
+        if (people[i] == "Devon"){
+            break;
+        }
+    } 
+
+                /*Ex2*/
+      /*1,2,3*/
+      let colors = ["black","red","green","blue"];
+      let suffixes =["1st", "2nd", "3rd", "4th"];
+      for(i in colors,suffixes ){
+        console.log("My "+suffixes[i]+" choice is",colors[i])
+
+      }
+                /*Ex3*/
+         /*1,2*/
+     let number = prompt("Enter a number:");
+     number = Number(number);
+     while(number < 10){
+        number = Number(prompt("Number is too small. Enter a new number:"))
+     }
+     console.log("Great! Your number is:", number);
+
+                /*Ex4*/
+            /*1,2,3,4*/
+
+    const building = {
+        numberOfFloors: 4,
+        numberOfAptByFloor: {
+            firstFloor: 3,
+            secondFloor: 4,
+            thirdFloor: 9,
+            fourthFloor: 2,
+        },
+        nameOfTenants: ["Sarah", "Dan", "David"],
+        numberOfRoomsAndRent:  {
+            sarah: [3, 990],
+            dan:  [4, 1000],
+            david: [1, 500],
+        },
+    }
+    console.log(building.numberOfFloors)
+    console.log(building.numberOfAptByFloor["firstFloor"])
+    console.log(building.numberOfAptByFloor["thirdFloor"])
+    console.log(building.nameOfTenants[1])
+    console.log(building.numberOfRoomsAndRent.dan[0])
+    Sarah_David_rent = building.numberOfRoomsAndRent.sarah[1]+building.numberOfRoomsAndRent.david[1]
+    Dan_rent =building.numberOfRoomsAndRent.dan[1]
+    if(Dan_rent > Sarah_David_rent){
+        Dan_rent.dan[1]+=200
+        
+    }
+    console.log(Dan_rent)
+
+             /*Ex5*/
+       /*1,2,3*/
+    
+    const family = {
+        father: "John",
+        mother: "Mary",
+        son: "Alex",
+        daughter: "Emma",
+        pets: ["Buddy", "Luna"]
+    };
+    
+    for (i in family){
+        console.log("Keys: ",i)
+    }
+    for (i in family){
+        console.log("Values: ",family[i])
+    }
+            /*Ex6*/
+
+    const details = {
+        my: 'name',
+        is: 'Rudolf',
+        the: 'reindeer'
+    }
+    let sentence = ''
+    for (i in details){
+        sentence += `${i} ${details[i]}`;
+        
+    }
+    console.log(sentence.trim());
+
+    const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+    let letters = []
+    for (let i = 0 ; i < names.length;i++){
+        letters.push(names[i][0]);       
+    }
+    console.log(letters.sort().join(''))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>XP GOLD</h1>
+
+    <script>
+        /*Exercise 1 : Divisible by three*/
+        let numbers = [123, 8409, 100053, 333333333, 7]
+        for (i in numbers){
+            if (numbers[i] % 3 == 0){
+                console.log("True")
+            }else{
+                console.log("False")
+            }
+        }
+
+        /*Exercise 2 : Attendance*/
+        let guestList = {
+            randy: "Germany",
+            karla: "France",
+            wendy: "Japan",
+            norman: "England",
+            sam: "Argentina"
+        }
+        student_input = prompt("Please Enter Your name ")
+        if (student_input in guestList){
+            console.log("Hi! I'm "+student_input+ " ,and I'm from "+ guestList[student_input])
+        }else{
+            console.log("Hi! I'm a guest.")
+        }
+        /*Exercise 3 : Playing with numbers*/
+
+        let age = [20,5,12,43,98,55];
+        let sum = 0;
+ 
+        for(i in age){
+            sum += age[i]
+        }
+        console.log(sum)
+
+        let highest =age[0];
+        for(i in age){
+            if ( age[i] > highest ){
+                highest = age[i];
+            }
+            
+            
+        }
+        console.log(highest)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Daily challenge: Not Bad</h2>
+    <script>
+        let sentece = 'This dinner is not that bad ! You cook well'
+        let wordNot = sentece.indexOf("not")
+        let wordBad = sentece.indexOf("bad")
+
+        if (wordNot!==-1 && wordBad!==-1&& wordBad > wordNot){
+            let result = sentece.slice(0,wordNot)+"good"+sentece.slice(wordBad+3)
+            console.log(result)
+        }else{
+            console.log(sentece)
+        }
+
+        
+    </script>
+</body>
+</html>

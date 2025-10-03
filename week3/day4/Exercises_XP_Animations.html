@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 1 - Timer</title>
+  <style>
+    p {
+      background: yellow;
+      color: red;
+    }
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background: yellow;
+    }
+    #animate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <button id="clear">Clear Interval</button>
+
+  <p><button onclick="myMove()">Click Me</button></p>
+  <div id="container">
+    <div id="animate"></div>
+  </div>
+
+  <script>
+   
+    setTimeout(() => {
+      alert("Hello World");
+    }, 2000);
+
+    
+    setTimeout(() => {
+      const container = document.getElementById("container");
+      const p = document.createElement("p");
+      p.textContent = "Hello World";
+      container.appendChild(p);
+    }, 2000);
+
+    const container = document.getElementById("container");
+    let count = 1;
+    const intervalId = setInterval(() => {
+      const p = document.createElement("p");
+      p.textContent = "Hello World";
+      container.appendChild(p);
+      count++;
+
+      
+      if (count === 5) {
+        clearInterval(intervalId);
+      }
+    }, 2000);
+
+    
+    document.getElementById("clear").addEventListener("click", () => {
+      clearInterval(intervalId);
+    });
+
+    /*Ex 2*/
+
+     function myMove() {
+      const elem = document.getElementById("animate");
+      let pos = 0;
+      const containerWidth = 400; 
+      const boxWidth = 50; 
+      const maxPos = containerWidth - boxWidth; // 350px
+
+      const id = setInterval(frame, 1);
+      function frame() {
+        if (pos >= maxPos) {
+          clearInterval(id);
+        } else {
+          pos++;
+          elem.style.left = pos + "px";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+

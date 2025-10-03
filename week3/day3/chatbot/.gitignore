@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+*.env
+
+# Files & folders
+uploads/
+memory.json
+
+# VS Code
+.vscode/
+
+# Mac/Linux
+.DS_Store

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>XP Ninja</h2>
+    <script>
+        /*Exercise 1 : Checking the BMI*/
+       
+    let person1 = {
+        fullName: "Alice Johnson",
+        mass: 68,    
+        height: 1.65,
+        calcBMI:function(){
+            return this.mass / (this.height**2);
+        }    
+    };
+
+    let person2 = {
+        fullName: "Bob Smith",
+        mass: 85,    
+        height: 1.80,
+        calcBMI:function(){
+            return this.mass / (this.height**2);
+        }    
+    };
+    console.log(person1.fullName +"`s BIM: ",person1.calcBMI().toFixed(2))
+    console.log(person2.fullName +"`s BIM: ",person2.calcBMI().toFixed(2))
+                /*Exercise 2 : Grade Average*/
+
+    
+  
+    function calculateAverage(gradesList) {
+        let sum = 0;
+        for (let i = 0; i < gradesList.length; i++) {
+            sum += gradesList[i];
+        }
+    return sum / gradesList.length;
+    }
+
+    
+    function findAvg(gradesList) {
+    const avg = calculateAverage(gradesList);
+    console.log("Average:", avg);
+
+    if (avg > 65) {
+        console.log("You passed ");
+    } else {
+        console.log("You Shell Not Pass.");
+    }
+    }
+
+    findAvg([80, 90, 10]);  
+    
+
+    </script>
+</body>
+</html>

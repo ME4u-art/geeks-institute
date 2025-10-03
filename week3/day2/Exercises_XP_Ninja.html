@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Exercises XP Ninja</h2>
+    <script>
+        /*ex1*/
+        
+    let randomNum = Math.floor(Math.random() * 100) + 1;
+    console.log("Random number:", randomNum);
+
+    for (let i = 0; i <= randomNum; i++) {
+        if (i % 2 === 0) {
+            console.log(i);
+        }
+    }
+        /*ex2*/
+    function capitalize(str) {
+    let even = "";
+    let odd = "";
+
+    for (let i = 0; i < str.length; i++) {
+        if (i % 2 === 0) {
+            even += str[i].toUpperCase();
+            odd += str[i];
+            } else {
+            even += str[i];
+            odd += str[i].toUpperCase();
+            }
+        }
+    return [even, odd];
+    }
+    console.log(capitalize("abcdef"));
+
+        /*ex3*/
+    function isPalindrome(str) {
+        let reversed = str.split("").reverse().join("");
+        return str === reversed;
+    }
+
+    console.log(isPalindrome("madam")); 
+    console.log(isPalindrome("hello")); 
+         
+        /*ex4*/
+    function biggestNumberInArray(arrayNumber) {
+        if (arrayNumber.length === 0) return 0;
+        let biggest = Number.NEGATIVE_INFINITY;
+        for (let item of arrayNumber) {
+            if (typeof item === "number" && item > biggest) {
+                biggest = item;
+            }
+        }
+        return biggest === Number.NEGATIVE_INFINITY ? 0 : biggest;
+    }
+
+    const array = [-1,0,3,100, 99, 2, 99];
+    const array2 = ['a', 3, 4, 2];
+    const array3 = [];
+
+    console.log(biggestNumberInArray(array));  
+    console.log(biggestNumberInArray(array2));
+    console.log(biggestNumberInArray(array3)); 
+        
+        /*ex5*/
+    function uniqueElements(arr) {
+        return [...new Set(arr)];
+    }
+
+    console.log(uniqueElements([1,2,3,3,3,3,4,5])); 
+
+        /*ex6*/
+        /*i tride to do it.... but i couldn't*/
+
+
+
+
+
+    </script>
+</body>
+</html>

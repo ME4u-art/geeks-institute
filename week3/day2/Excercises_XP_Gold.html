@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 3px 5px;
+    }
+  </style>
+</head>
+<body>
+
+    <h2>Exercises XP Gold</h2>
+     <table>
+    <tr>
+      <td>1:1</td>
+      <td>2:1</td>
+      <td>3:1</td>
+      <td>4:1</td>
+      <td>5:1</td>
+    </tr>
+    <tr>
+      <td>1:2</td>
+      <td>2:2</td>
+      <td>3:2</td>
+      <td>4:2</td>
+      <td>5:2</td>
+    </tr>
+    <tr>
+      <td>1:3</td>
+      <td>2:3</td>
+      <td>3:3</td>
+      <td>4:3</td>
+      <td>5:3</td>
+    </tr>
+    <tr>
+      <td>1:4</td>
+      <td>2:4</td>
+      <td>3:4</td>
+      <td>4:4</td>
+      <td>5:4</td>
+    </tr>
+    <tr>
+      <td>1:5</td>
+      <td>2:5</td>
+      <td>3:5</td>
+      <td>4:5</td>
+      <td>5:5</td>
+    </tr>
+  </table>
+
+    <script>
+
+        /*ex1*/
+        function isBlank(str) {
+            return str.length === 0; 
+        }
+
+        console.log(isBlank(''));     
+        console.log(isBlank('abc'));
+         /*ex2*/
+        function abbrevName(name){
+            let parts = name.split(" ");
+            return parts[0]+" "+ parts[1][0] +".";
+        }
+        console.log(abbrevName("Robin Singh"))
+        /*ex3*/
+        function swapCase(str){
+            return str
+            .split("")
+            .map(char=>
+                char === char.toUpperCase()
+                ? char.toLowerCase()
+                : char.toUpperCase()
+            )
+            .join("");
+        }
+        console.log(swapCase("The Quick Brown Fox"))
+        /*ex4*/
+        function isOmnipresent(arr,val){
+            return arr.every(subArr=> subArr.includes(val) )
+        }
+        console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1))
+        console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6)) 
+        /*ex5*/
+        let table= document.querySelector("table");
+        for (let i = 0 ; i<table.rows.length; i++){
+            table.rows[i].cells[i].style.backgroundColor="red";
+            
+        }
+
+
+    </script>
+</body>
+</html>

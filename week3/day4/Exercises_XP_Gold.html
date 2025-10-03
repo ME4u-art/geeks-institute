@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="genres">
+  <option value="rock">Rock</option>
+  <option value="blues" selected>Blues</option>
+</select>
+ <p id="result"></p>
+<form>
+    <select id="colorSelect">
+        <option>Red</option>
+        <option>Green</option>
+        <option>White</option>
+        <option>Black</option>
+    </select>
+    <input type="button" value="Select and Remove" id="removeBtn">
+</form>
+
+<div id="root"></div>
+<script>
+    /*Ex1*/
+     const select = document.getElementById("genres");
+    const result = document.getElementById("result");
+
+  
+    result.textContent = "Selected: " + select.value;
+
+    select.addEventListener("change", () => {
+      result.textContent = "Selected: " + select.value;
+    });
+    /*Ex2*/
+
+    const colorSelect = document.getElementById("colorSelect");
+    const removeBtn = document.getElementById("removeBtn");
+
+    removeBtn.addEventListener("click", removecolor);
+
+    function removecolor() {
+      const selectedIndex = colorSelect.selectedIndex;
+      if (selectedIndex !== -1) {
+        colorSelect.remove(selectedIndex);
+      }
+    }
+
+   
+    const newOption = document.createElement("option");
+    newOption.value = "classic";
+    newOption.text = "Classic";
+    newOption.selected = true;
+    select.appendChild(newOption);
+
+   
+    result.textContent = "Selected: " + select.value;
+
+    /*Ex 3*/ 
+     let shoppingList = [];
+
+    const root = document.getElementById("root");
+
+   
+    const form = document.createElement("form");
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter item";
+
+    const addBtn = document.createElement("button");
+    addBtn.type = "submit";
+    addBtn.textContent = "AddItem";
+
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.textContent = "ClearAll";
+
+    const ul = document.createElement("ul");
+
+    form.appendChild(input);
+    form.appendChild(addBtn);
+    form.appendChild(clearBtn);
+    root.appendChild(form);
+    root.appendChild(ul);
+
+   
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      addItem();
+    });
+
+    function addItem() {
+      const value = input.value.trim();
+      if (value) {
+        shoppingList.push(value);
+        renderList();
+        input.value = "";
+      }
+    }
+
+   
+    clearBtn.addEventListener("click", clearAll);
+
+    function clearAll() {
+      shoppingList = [];
+      renderList();
+    }
+
+   
+    function renderList() {
+      ul.innerHTML = "";
+      shoppingList.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+</script>
+</body>
+</html>

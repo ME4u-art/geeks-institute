@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navBar">
+    <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">My Friends</a></li>
+        <li><a href="#">Messenger</a></li>
+        <li><a href="#">My Pics</a></li>
+    </ul>
+</div>
+
+    <h2>Exercise XP</h2>
+
+    <div id="container">Users:</div>
+<ul class="list">
+    <li>John</li>
+    <li>Pete</li>
+</ul>
+<ul class="list">
+    <li>David</li>
+    <li>Sarah</li>
+    <li>Dan</li>
+</ul>
+<section class="listBooks"></section>
+
+    <script>
+          /*Exercise 1 */
+        
+        function displayNumbersDivisible(divisor){
+            let sum =0
+            let num = " "
+            for (let i= 0; i <=500 ;i++){
+                if( i % divisor == 0){
+                    sum +=i
+                    num +=i +" "
+                   
+                    
+                }
+            }
+            console.log(`Numbers divisble by ${divisor}: ${num}`)
+            console.log("sum",sum)
+
+        }
+
+        /*Exercise 2 */
+
+        const stock = { 
+            "banana": 6, 
+            "apple": 0,
+            "pear": 12,
+            "orange": 32,
+            "blueberry":1
+        }  
+
+        const prices = {    
+            "banana": 4, 
+            "apple": 2, 
+            "pear": 1,
+            "orange": 1.5,
+            "blueberry":10
+        } 
+
+        let shoppinglist =["banana","orange","apple"]
+        function myBill(){
+            for(let item of shoppinglist){
+                if(item in stock ){
+                   if(stock[item] === 0){
+                    console.log(`the ${item} is out of stock`)
+                   }else{
+                
+                    console.log(`the ${item} in the stock. price ${prices[item]}`)
+                    stock[item] -= 1
+
+                    
+                   }
+                }
+                
+            }
+        }
+        /*Exercise 3 */
+
+        function changeEnough(itemPrice, amountOfChange){
+            let total =(amountOfChange[0]*0.25)+(amountOfChange[1]*0.10)+(amountOfChange[2]*0.05)+(amountOfChange[3]*0.01);
+            if (total >= itemPrice){
+                console.log("True")
+            }else{
+                console.log("False")
+            }
+        }
+        /*Exercise 4 */
+
+        function hotelCost(user_nights){
+         
+             while(true){
+
+                user_nights 
+
+                if( !isNaN(user_nights) && user_nights !== "" && Number(user_nights) > 0 ){
+                    user_nights = Number(user_nights);
+                    break                     
+                }
+                else{
+                    alert(`Please Enter a valid input`)
+
+                }
+               
+            }
+            return user_nights * 140;
+        }
+        function planeRideCost(user_dest){
+            while(true){
+                user_dest
+
+                if(  user_dest !== ""  ){
+                    if(user_dest &&isNaN(user_dest)){
+                        break;
+                    }
+                }
+                else{
+                    alert(`Please Enter a valid input`)
+
+                }
+               
+            }
+            user_dest = user_dest.toLocaleLowerCase();
+            if (user_dest === "london"){
+                return 183;
+            }else if(user_dest === "paris"){
+                return 220;
+            }else{
+                return 300;
+            }
+        }
+
+        function rentalCarCost(days){
+
+            while(true){
+                days 
+                if(!isNaN(days)&&days!==""&&Number(days)>0){
+                    days = Number(days);
+                    break
+                }
+                alert("Please Enter a valid input ")
+            }
+            let cost = days * 40;
+            if (days>10){
+                cost*=0.95
+            }
+            return cost;
+        }
+
+        function totalVacationCost(){
+            let user_nights = prompt("How many nights would you like to stay in the hotel?");
+            let user_dest = prompt("What is your destination?");
+            let days = prompt("How many days would you like to rent the car?");
+
+            const hotel = hotelCost(user_nights);
+            const plane = planeRideCost(user_dest);
+            const car = rentalCarCost(days);
+
+            console.log(`The hotel cost: $${hotel}, the plane tickets cost: $${plane}, the car rental cost: $${car}.`);
+            console.log(`Total vacation cost: $${hotel + plane + car}`);
+        }
+
+                /*Exercise 5 */
+        const divContainer = document.getElementById("container")
+        console.log(divContainer)
+
+        const firstList = document.querySelectorAll(".list")[0];
+        firstList.children[1].textContent = "Richard";
+
+        const secondList = document.querySelectorAll(".list")[1];
+        secondList.children[1].remove();
+        
+        firstList.children[0].textContent = "Hicham"
+        secondList.children[0].textContent = "Hicham"
+        
+        firstList.classList.add("student_list");
+        secondList.classList.add("studen_list")
+
+        firstList.classList.add("universtiy","attendance")
+
+        divContainer.style.background = "lightblue"
+        divContainer.style.padding ="10px"
+
+        const dan = Array.from(secondList.children).find(li =>li.textContent ==="Dan")
+        if (dan){
+            dan.style.display="none"
+        }
+
+        const richard = Array.from(firstList.children).find(li =>li.textContent ==="Richard")
+        if (richard){
+            richard.style.display="none"
+        }
+
+        document.body.style.fontSize = "18px";
+
+        if (divContainer.style.backgroundColor === "lightblue"){
+            const users = Array.from(firstList.children).map(li => li.textContent);
+            alert(`Hello ${users[0]} and ${users[1]}`);
+        }
+
+                    /*Exercise 6 */
+        
+        divNavBar = document.getElementById("navBar")
+        divNavBar.setAttribute("id","socialNetworkNavigation")
+
+        const newLi = document.createElement("li");
+        const newText = document.createTextNode("Logout") 
+        newLi.appendChild(newText)
+
+        const ul = divNavBar.querySelector("ul");
+        ul.appendChild(newLi)
+
+        const firstLi = ul.firstElementChild;
+        const lastLi = ul.lastElementChild;
+        
+        console.log(`First link: ${firstLi.textContent}`)
+        console.log(`Last link: ${lastLi.textContent}`)
+
+                      /*Exercise 7 */
+        const allBooks = [
+            {
+                title: "Harry Potter",
+                author: "J.K. Rowling",
+                image: "https://covers.openlibrary.org/b/id/7984916-L.jpg",
+                 alreadyRead: true
+            },
+            {
+                 title: "The Alchemist",
+                 author: "Paulo Coelho",
+                 image: "https://covers.openlibrary.org/b/id/8225631-L.jpg",
+                 alreadyRead: true
+             }
+        ];
+      
+        const section = document.querySelector(".listBooks");
+
+
+        allBooks.forEach(book => {
+  
+            const bookDiv = document.createElement("div");
+            bookDiv.style.marginBottom = "20px";
+
+    
+            const details = document.createElement("p");
+            details.textContent = `${book.title} written by ${book.author}`;
+
+
+            if (book.alreadyRead) {
+                details.style.color = "red";
+            }
+
+    
+            const img = document.createElement("img");
+            img.src = book.image;
+            img.style.width = "100px";
+
+            
+            bookDiv.appendChild(details);
+            bookDiv.appendChild(img);
+
+
+            section.appendChild(bookDiv);
+        });
+
+
+        
+
+
+    </script>
+  
+</body>
+</html>

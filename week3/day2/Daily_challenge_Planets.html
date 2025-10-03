@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body {
+                background-color: black;
+                padding: 10px;
+            }
+            .planet {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                text-align: center;
+                padding: 10px;
+                position: relative;
+                border: 2px solid white;
+            }
+            .moon {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: rgb(237, 237, 237);
+                border: 5px solid red;
+            }
+        </style>
+</head>
+<body>
+    <h2>Daily challenge: Planets</h2>
+     <section class="listPlanets"></section>
+
+    <script>
+    const section = document.querySelector(".listPlanets");
+    const planets = [
+    { name: "Mercury", color: "gray", moons: 0 },
+    { name: "Venus", color: "orange", moons: 0 },
+    { name: "Earth", color: "blue", moons: 1 },
+    { name: "Mars", color: "red", moons: 2 },
+    { name: "Jupiter", color: "brown", moons: 79 },
+    { name: "Saturn", color: "goldenrod", moons: 82 },
+    { name: "Uranus", color: "lightblue", moons: 27 },
+    { name: "Neptune", color: "purple", moons: 14 }
+    ];
+
+
+    planets.forEach((planet, index) => {
+        const planetDiv = document.createElement("div");
+        planetDiv.classList.add("planet");
+        planetDiv.style.backgroundColor = planet.color;
+        planetDiv.textContent = planet.name;
+
+        let maxMoonsToShow = 5;
+        for (let i = 0; i < Math.min(planet.moons, maxMoonsToShow); i++) {
+            const moon = document.createElement("div");
+            moon.classList.add("moon");
+            moon.style.left = `${110 + i * 35}px`;
+            moon.style.top = `${Math.random() * 80}px`;
+            planetDiv.appendChild(moon);
+        }
+        section.appendChild(planetDiv);
+    });
+
+    </script>
+</body>
+</html>
