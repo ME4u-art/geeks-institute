@@ -14,4 +14,4 @@ function mergeWords(word){
     return inner;
 }
 
-const mergeWords = (string) => (nextString) => nextString=== undefined? string: mergeWords(string+ " " +nextString);
+const mergeWords = (string) => (nextString) => nextString === undefined ? string: mergeWords(string+ " " +nextString);

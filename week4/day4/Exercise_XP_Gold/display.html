@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Page</title>
+</head>
+<body>
+  <h1>User Info</h1>
+  <section id="userData"></section>
+
+  <script>
+    const section = document.getElementById('userData');
+
+    // Retrieve data from localStorage
+    const name = localStorage.getItem('name');
+    const lastname = localStorage.getItem('lastname');
+
+    // Display in the section
+    section.textContent = `Name: ${name}, Last Name: ${lastname}`;
+  </script>
+</body>
+</html>
