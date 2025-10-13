@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <style>
+        /* GENERAL STYLES */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* QUOTE SECTION */
+        #quote-section, #filter-section {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 600px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        #quote-section:hover, #filter-section:hover {
+            transform: scale(1.02);
+        }
+
+        #quote-text, #filtered-quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        #quote-author, #filtered-quote-author {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* BUTTONS */
+        button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #5751d1;
+            transform: translateY(-2px);
+        }
+
+        /* FORMS */
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6c63ff;
+            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+        }
+
+        /* LIKE COUNT */
+        #like-count {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #ff4b5c;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 650px) {
+            #quote-section, #filter-section {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quote Generator</h1>
+
+    <!-- Section to display quotes -->
+    <section id="quote-section">
+        <p id="quote-text">Click "Generate Quote" to see an inspiring quote!</p>
+        <p id="quote-author"></p>
+        <div>
+            <button id="char-with-space">Chars (with space)</button>
+            <button id="char-no-space">Chars (no space)</button>
+            <button id="word-count">Word count</button>
+            <button id="like-btn">Like ❤️</button>
+            <span id="like-count"></span>
+        </div>
+    </section>
+
+    <!-- Button to generate random quote -->
+    <button id="generate-btn">Generate Quote</button>
+
+    <hr style="width: 80%; margin: 40px 0; border: 1px solid #ccc;">
+
+    <!-- Form to add new quote -->
+    <h2>Add a New Quote</h2>
+    <form id="add-quote-form">
+        <input type="text" id="new-quote" placeholder="Quote" required>
+        <input type="text" id="new-author" placeholder="Author" required>
+        <button type="submit">Add Quote</button>
+    </form>
+
+    <hr style="width: 80%; margin: 40px 0; border: 1px solid #ccc;">
+
+    <!-- Filter by author -->
+    <h2>Filter by Author</h2>
+    <form id="filter-form">
+        <input type="text" id="filter-author" placeholder="Author name" required>
+        <button type="submit">Filter</button>
+    </form>
+    <section id="filter-section">
+        <p id="filtered-quote-text"></p>
+        <p id="filtered-quote-author"></p>
+        <div>
+            <button id="prev-quote">Previous</button>
+            <button id="next-quote">Next</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
