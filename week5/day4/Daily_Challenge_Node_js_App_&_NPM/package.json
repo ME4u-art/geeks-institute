@@ -1,0 +1,11 @@
+{
+  "name": "daily-challenge",
+  "version": "1.0.0",
+  "main": "challenge.js",
+  "scripts": {
+    "start": "node challenge.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}

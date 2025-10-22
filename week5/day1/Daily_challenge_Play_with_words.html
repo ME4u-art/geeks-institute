@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just for test</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*1st daily challenge*/
+
+
+function makeAllCaps(words){
+    return new Promise((resolve, reject)=>{
+        const allstring = words.every(word => typeof word === "string")
+        if( allstring){
+            const uppercased = words.map(word => word.toUpperCase());
+            resolve(uppercased);
+        }else{
+            reject("Error: Not all items are strings!")
+        }
+
+    })
+
+}
+
+function sortWords(words){
+    return new Promise((resolve, reject)=>{
+        if (words.length > 4){
+            const sorted = [...words].sort()
+            resolve(sorted)
+        }else{
+            reject("Error: Array length must be greater then 4")
+        }
+    })
+}
+
+
+                        /*2nd daily challenge*/
+
+const morse = `{
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "-": "-....-",
+  "/": "-..-.",
+  "@": ".--.-.",
+  "(": "-.--.",
+  ")": "-.--.-"
+}`;
+
+function toJs(morse) {
+  return new Promise((resolve, reject) => {
+    if (!morse) {
+      reject("The object is empty");
+    } else {
+      const morsejs = JSON.parse(morse);
+      resolve(morsejs);
+    }
+  });
+}
+
+function toMorse(morsejs) {
+  return new Promise((resolve, reject) => {
+    const input = prompt("Enter a sentence:").toLowerCase();
+    if (!input) {
+      reject("Error: No input provided!");
+      return;
+    }
+
+    const morseArray = [];
+    for (let char of input) {
+      if (char === " ") {
+        morseArray.push(" ");
+      } else if (morsejs[char]) {
+        morseArray.push(morsejs[char]);
+      } else {
+        reject(`Error: Character "${char}" cannot be translated to Morse code`);
+        return;
+      }
+    }
+
+    
+    resolve({ input, morseArray });
+  });
+}
+
+function joinWords({ input, morseArray }) {
+  if (!morseArray || morseArray.length === 0) {
+    console.error("Error: Nothing to display");
+    return;
+  }
+
+  const display = document.createElement("div");
+  display.innerHTML = `<p>Input: ${input}</p>`;
+  display.innerHTML += morseArray.join("<br>");
+  document.body.appendChild(display);
+}
+
+
+toJs(morse)
+  .then(toMorse)
+  .then(joinWords)
+  .catch(error => console.error(error));
+
+</script>
+

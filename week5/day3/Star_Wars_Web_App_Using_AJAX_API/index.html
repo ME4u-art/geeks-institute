@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars Info</title>
+
+  <style>
+    /* ---------- GENERAL ---------- */
+    body {
+      background: url('/week5/day3/Star_Wars_Web_App_Using_AJAX_API/image/Hyades.jpg') center/cover no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ---------- LOGO ---------- */
+    .logo {
+      width: 350px;
+      margin-top: 50px;
+    }
+
+    /* ---------- INFO BOX ---------- */
+    .info-box {
+      margin: 40px auto;
+      padding: 20px 40px;
+      border: 3px solid yellow;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.75);
+      width: 40%;
+      line-height: 1.8;
+      min-height: 150px;
+    }
+
+    /* ---------- BUTTON ---------- */
+    button {
+      background-color: yellow;
+      color: black;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: gold;
+      transform: scale(1.05);
+    }
+
+    /* ---------- LOADING ---------- */
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      color: yellow;
+      font-size: 1.3em;
+    }
+
+    .spinner {
+      border: 6px solid rgba(255, 255, 0, 0.3);
+      border-top: 6px solid yellow;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Star Wars Logo -->
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg" 
+    class="logo" 
+    alt="Star Wars Logo"
+  >
+  
+  <!-- Character Info Box -->
+  <div id="info-box" class="info-box">
+    <h2 id="name">Click "Find Someone" 👇</h2>
+    <p><strong>Height:</strong> <span id="height">-</span></p>
+    <p><strong>Gender:</strong> <span id="gender">-</span></p>
+    <p><strong>Birth Year:</strong> <span id="birth-year">-</span></p>
+    <p><strong>Home World:</strong> <span id="homeworld">-</span></p>
+  </div>
+
+  <!-- Find Button -->
+  <button id="btn">Find Someone</button>
+
+  <!-- Loading Spinner -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+<script>
+  const btn = document.getElementById("btn");
+  const nameEl = document.getElementById("name");
+  const heightEl = document.getElementById("height");
+  const genderEl = document.getElementById("gender");
+  const birthYearEl = document.getElementById("birth-year");
+  const homeworldEl = document.getElementById("homeworld");
+  const loading = document.getElementById("loading");
+  const infoBox = document.getElementById("info-box");
+
+  btn.addEventListener("click", getCharacter);
+
+  async function getCharacter() {
+    const randomId = Math.floor(Math.random() * 83) + 1; // random 1–83
+    loading.classList.remove("hidden");
+    infoBox.classList.add("hidden");
+
+    try {
+      // Fetch character info
+      const response = await fetch(`https://www.swapi.tech/api/people/${randomId}`);
+      if (!response.ok) throw new Error("Failed to fetch character");
+      const data = await response.json();
+
+      const person = data.result.properties;
+
+      // Extract values safely with defaults
+      const name = person.name || "Unknown";
+      const height = person.height && person.height !== "unknown" ? person.height : "Unknown";
+      const gender = person.gender || "Unknown";
+      const birthYear = person.birth_year || "Unknown";
+
+      // Try to fetch homeworld
+      let homeworld = "Unknown";
+      if (person.homeworld) {
+        try {
+          const homeResponse = await fetch(person.homeworld);
+          if (homeResponse.ok) {
+            const homeData = await homeResponse.json();
+            homeworld = homeData.result.properties.name || "Unknown";
+          }
+        } catch {
+          homeworld = "Unknown";
+        }
+      }
+
+      // Fill UI correctly (only inside the <span>)
+      nameEl.textContent = name;
+      heightEl.textContent = height;
+      genderEl.textContent = gender;
+      birthYearEl.textContent = birthYear;
+      homeworldEl.textContent = homeworld;
+
+    } catch (error) {
+      console.error(error);
+      nameEl.textContent = "Character not found!";
+      heightEl.textContent = genderEl.textContent = birthYearEl.textContent = homeworldEl.textContent = "-";
+    } finally {
+      loading.classList.add("hidden");
+      infoBox.classList.remove("hidden");
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

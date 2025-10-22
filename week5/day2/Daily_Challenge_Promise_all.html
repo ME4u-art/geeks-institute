@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunrise Time Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      background-color: royalblue;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: dodgerblue;
+    }
+
+    #results {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1> Sunrise Time Finder</h1>
+
+  <form id="sunForm">
+    <h3>City 1</h3>
+    <input type="number" step="any" id="lat1" placeholder="Latitude (e.g. 48.864716)" required>
+    <input type="number" step="any" id="lon1" placeholder="Longitude (e.g. 2.349014)" required>
+
+    <h3>City 2</h3>
+    <input type="number" step="any" id="lat2" placeholder="Latitude (e.g. 40.730610)" required>
+    <input type="number" step="any" id="lon2" placeholder="Longitude (e.g. -73.935242)" required>
+
+    <button type="submit">Get Sunrise Times</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script >const form = document.getElementById('sunForm');
+const resultsDiv = document.getElementById('results');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const lat1 = document.getElementById('lat1').value;
+  const lon1 = document.getElementById('lon1').value;
+  const lat2 = document.getElementById('lat2').value;
+  const lon2 = document.getElementById('lon2').value;
+
+  resultsDiv.textContent = "Fetching sunrise times... ";
+
+  const city1Promise = fetch(`https://api.sunrise-sunset.org/json?lat=${lat1}&lng=${lon1}&formatted=0`)
+    .then(res => res.json())
+    .then(data => data.results.sunrise);
+
+  const city2Promise = fetch(`https://api.sunrise-sunset.org/json?lat=${lat2}&lng=${lon2}&formatted=0`)
+    .then(res => res.json())
+    .then(data => data.results.sunrise);
+
+  try {
+
+    const [sunrise1, sunrise2] = await Promise.all([city1Promise, city2Promise]);
+
+    
+    const sunriseTime1 = new Date(sunrise1).toLocaleTimeString();
+    const sunriseTime2 = new Date(sunrise2).toLocaleTimeString();
+
+    resultsDiv.innerHTML = `
+      <p> <strong>City 1 Sunrise:</strong> ${sunriseTime1}</p>
+      <p><strong>City 2 Sunrise:</strong> ${sunriseTime2}</p>
+    `;
+  } catch (error) {
+    console.error(error);
+    resultsDiv.textContent = " Failed to fetch sunrise times. Please try again.";
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search GIFs from Giphy</title>
+</head>
+<body>
+    
+    <form id="gifForm">
+        <input type="text" id="searchInput" placeholder="Enter catgory" required>
+        <button type="submit">Search</button>
+    </form>
+     <button type="button" id="DeleteBtn">Delete All Gifs</button>
+
+    <div id = "gifContainer"></div>
+
+    <script>
+                        /*Exercise 1 : Giphy API #3*/
+  const API_KEY = "fRZDZiXTTkWPBsmVsvbkrBy6B09ezIEP"; 
+  const form = document.getElementById('gifForm');
+  const input = document.getElementById('searchInput');
+  const deleteBtn = document.getElementById('DeleteBtn');
+  const container = document.getElementById('gifContainer');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const searchTerm = input.value.trim();
+    if (!searchTerm) return alert('Please enter a category.');
+
+    try {
+      const response = await fetch(
+        `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchTerm}&limit=10`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      container.innerHTML = ''; 
+      data.data.forEach((gif) => {
+        const img = document.createElement('img');
+        img.src = gif.images.fixed_height.url;
+        container.appendChild(img);
+      });
+    } catch (error) {
+      console.error('Error fetching Giphy data:', error);
+      alert('Something went wrong. Check the console for details.');
+    }
+  });
+
+  deleteBtn.addEventListener('click', () => {
+    container.innerHTML = '';
+  });
+
+
+                            /*Exercise 2 : Analyze #4*/
+
+/*
+==CONCURRENT START with Promise.all==
+starting slow promise
+starting fast promise
+fast promise is done
+slow promise is done
+slow
+fast
+
+*/
+
+                            /*Exercise 3 : Analyze #5*/
+
+/*
+==PARALLEL with await Promise.all==
+starting slow promise
+starting fast promise
+fast promise is done
+fast
+slow promise is done
+slow
+*/
+
+                            /*Exercise 4 : Analyze #6*/
+
+/*
+==PARALLEL with Promise.then==
+starting slow promise
+starting fast promise
+fast promise is done
+fast
+slow promise is done
+slow
+
+*/
+</script>
+
+</body>
+</html>
