@@ -1,0 +1,23 @@
+{
+  "name": "mini_project_notes_app",
+  "version": "1.0.0",
+  "description": "A simple command-line notes application using Node.js, Yargs, and Lodash",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "notes",
+    "cli",
+    "nodejs",
+    "yargs",
+    "lodash"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "lodash": "^4.17.21",
+    "yargs": "^17.7.2"
+  }
+}

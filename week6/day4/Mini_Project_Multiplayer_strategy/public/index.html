@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turn-Based Strategy Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🏰 Capture the Base</h1>
+    <div class="setup">
+      <input id="p1" placeholder="Player 1 name" />
+      <input id="p2" placeholder="Player 2 name" />
+      <button id="startBtn">Start Game</button>
+    </div>
+    <div id="info"></div>
+    <div id="grid" class="grid"></div>
+    <div class="controls">
+      <button data-dir="up">⬆️</button>
+      <div>
+        <button data-dir="left">⬅️</button>
+        <button data-dir="down">⬇️</button>
+        <button data-dir="right">➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
