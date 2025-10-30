@@ -1,0 +1,131 @@
+@base_url = http://localhost:5000
+@admin_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MDM1NzliMWMwZjE0OWZkMTQ4MWYxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MTgyNjc4OCwiZXhwIjoxNzYxOTEzMTg4fQ._iv3xAvQf3x89F127MPRK77IvSC9M0NSkvvLasfJypc
+
+
+### 🔹 Register new user
+POST {{base_url}}/auth/register
+
+### 🔹 Register a new user
+POST {{base_url}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "adminuser",
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+### 🔹 Login as admin to get token
+POST {{base_url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+### 🔹 Users Endpoints
+### Get all users
+GET {{base_url}}/users
+Authorization: Bearer {{admin_token}}
+
+### Get user by ID
+GET {{base_url}}/users/69034deeb13d7f5eb2159788
+Authorization: Bearer {{admin_token}}
+
+### Create new user
+POST {{base_url}}/users
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "name": "hicham Doe",
+  "email": "hicham@example.com",
+  "password": "password123",
+  "role": "sales",
+  "status": "active"
+  }
+
+### Update user
+PUT {{base_url}}/users/69035993ae0fab7589deda1e
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "name": "John Smith",
+  "email": "john.smith@example.com"
+}
+
+### Delete user
+DELETE {{base_url}}/users/69035993ae0fab7589deda1e
+Authorization: Bearer {{admin_token}}
+
+### 🔹 Cars Endpoints
+### Get all cars
+GET {{base_url}}/cars
+Authorization: Bearer {{admin_token}}
+
+### Get car by ID
+GET {{base_url}}/cars/690359ddae0fab7589deda28
+Authorization: Bearer {{admin_token}}
+
+### Create new car
+POST {{base_url}}/cars
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "make": "Toyota",
+  "model": "Corolla",
+  "year": 2025,
+  "price": 25000,
+  "status": "available"
+}
+
+### Update car
+PUT {{base_url}}/cars/690359ddae0fab7589deda28
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "price": 24000,
+  "status": "sold"
+}
+
+### Delete car
+DELETE {{base_url}}/cars/690359ddae0fab7589deda28
+Authorization: Bearer {{admin_token}}
+
+### 🔹 Sales Endpoints
+### Get all sales
+GET {{base_url}}/sales
+Authorization: Bearer {{admin_token}}
+
+### Get sale by ID
+GET {{base_url}}/sales/SALE_ID_HERE
+Authorization: Bearer {{admin_token}}
+
+### Create new sale
+POST {{base_url}}/sales
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "carId": "69035a54ae0fab7589deda42",
+  "userId": "690358261c0f149fd1481f28",
+  "price": 25000,
+  "date": "2025-10-30"
+}
+
+### Update sale
+PUT {{base_url}}/sales/SALE_ID_HERE
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "price": 24000
+}
+
+### Delete sale
+DELETE {{base_url}}/sales/SALE_ID_HERE
+Authorization: Bearer {{admin_token}}
